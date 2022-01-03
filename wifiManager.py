@@ -153,12 +153,12 @@ def encode_uid_pwd(uid, pwd):
 def get_network_from_request(request):
     uid=""
     pwd=""
-    request = request.split()
+    request = request.split("\r\n")
     for line in request:
         if len(line) > 3 and line[0:3] == "uid":
-            uid = line.split("=")[1]
+            uid = line[4:]
         if len(line) > 3 and line[0:3] == "pwd":
-            pwd = line.split("=")[1]
+            pwd = line[4:]
     
     
     return(uid, pwd)
